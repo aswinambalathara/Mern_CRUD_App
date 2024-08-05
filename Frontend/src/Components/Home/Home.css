@@ -1,0 +1,16 @@
+.Home{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+.home-content{
+    display: flex;
+    background: linear-gradient();
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}

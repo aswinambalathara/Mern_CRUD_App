@@ -1,7 +1,8 @@
 const userModel = require("../models/userModel");
+require("dotenv").config();
 const bcrypt = require("bcrypt");
-const cloudinary = require('../middlewares/cloudinary');
-
+const cloudinary = require("../middlewares/cloudinary");
+const jwt = require("jsonwebtoken");
 
 module.exports.doLogin = async (req, res) => {
   try {
@@ -20,11 +21,16 @@ module.exports.doLogin = async (req, res) => {
         message: "Invalid Password",
       });
     }
-
+    const token = jwt.sign(
+      { userName: user.fullName, userId: user._id },
+      process.env.JWT_SECRET,
+      { expiresIn: "24h" }
+    );
     return res.status(200).json({
       status: true,
       message: "User Authenticated",
-      data : user
+      userName: user.fullName,
+      token,
     });
   } catch (error) {
     console.error(`doLoginError == ${error}`);
@@ -62,7 +68,7 @@ module.exports.doSignup = async (req, res) => {
 
 module.exports.getProfile = async (req, res) => {
   try {
-    const userId = req.params;
+    const { userId } = req.user;
     const user = await userModel.findById(userId);
     if (!user) {
       return res.status(404).json({
@@ -81,7 +87,7 @@ module.exports.getProfile = async (req, res) => {
 
 module.exports.doEditProfile = async (req, res) => {
   try {
-    const { userId } = req.params;
+    const { userId } = req.user;
     const { fullName, email, password } = req.body;
     const user = await userModel.findById(userId);
     if (!user) {
@@ -98,7 +104,10 @@ module.exports.doEditProfile = async (req, res) => {
       email: email.length !== 0 ? email : undefined,
       password: hashPassword,
     };
-    const updateUser = await userModel.updateOne({ _id: userId }, {$set:update});
+    const updateUser = await userModel.updateOne(
+      { _id: userId },
+      { $set: update }
+    );
     if (updateUser) {
       return res.status(200).json({
         status: true,
@@ -110,10 +119,10 @@ module.exports.doEditProfile = async (req, res) => {
   }
 };
 
-module.exports.doUploadImage = async (req,res) => {
+module.exports.doUploadImage = async (req, res) => {
   try {
-    const { userId } = req.params;
+    const { userId } = req.user;
   } catch (error) {
     console.error(`DoEditProfileError == ${error}`);
   }
-}
+};

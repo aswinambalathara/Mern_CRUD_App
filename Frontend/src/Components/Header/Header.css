@@ -1,0 +1,22 @@
+.Header{
+    display: flex;
+    align-items:center ;
+    justify-content: space-between;
+    background-color: rgb(125, 125, 187);
+    padding: 0px 10px;
+}
+
+.Nav-Right{
+    display: flex;
+    align-items: center;
+}
+
+.profile{
+    display: flex;
+    align-items: center;
+}
+
+.Nav-Right p{
+    margin-right: 30px;
+}
+

@@ -1,9 +1,15 @@
-import React from 'react'
-
+import React from "react";
+import Header from "../../Components/Header/Header";
+import Footer from "../../Components/Footer/Footer";
+import ProfileComp from "../../Components/ProfileComponent.js/ProfileComp";
 function Profile() {
   return (
-    <div>Profile</div>
-  )
+    <>
+      <Header />
+      <ProfileComp />
+      <Footer />
+    </>
+  );
 }
 
-export default Profile
+export default Profile;

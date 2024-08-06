@@ -5,7 +5,7 @@ import React from "react";
 function Header() {
   return (
     <div className="Header">
-      <h4>MERN-APP</h4>
+      <h3>MERN-APP</h3>
       <div className="Nav-Right">
         
         <div className="profile">

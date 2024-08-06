@@ -6,7 +6,7 @@ function UserSignup() {
   return (
     <div className="userSignupContainer">
       <div className="screen">
-        <div className="screen__content">
+        <div className="screen__content_signup">
           <div className="title">
             <h4>MERN-CRUD_APP</h4>
             <h4>Sign UP</h4>

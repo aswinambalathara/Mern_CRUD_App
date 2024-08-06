@@ -6,7 +6,7 @@
     min-height: 100vh;
 }
 
-.screen {		
+.screen-login{		
 	background: linear-gradient(90deg, #5D54A4, #7C78B8);	
 	margin-top: 5rem;	
 	position: relative;	
@@ -27,15 +27,12 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin-top: 50px;
+	margin-top: 10px;
 	padding-bottom: 30px;
-}
-
-.title h4{
 	font-size: large;
-	margin: 5px;
 	color: rgb(46, 46, 101);
 }
+
 .screen__background {		
 	position: absolute;
 	top: 0;

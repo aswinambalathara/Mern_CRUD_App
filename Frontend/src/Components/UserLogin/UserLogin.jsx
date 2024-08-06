@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 function userLogin() {
   return (
     <div className='userLoginContainer'>
-    	<div className="screen">
+    	<div className="screen-login">
 		<div className="screen__content">
 			<div className='title'>
 				<h4>MERN-CRUD_APP</h4>

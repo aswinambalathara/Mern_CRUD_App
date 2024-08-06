@@ -11,6 +11,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />}></Route>
+        <Route path="/home" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
@@ -19,6 +20,7 @@ function App() {
           <Route path="login" element={<AdminLogin />} />
           <Route path="user_management" element={<UserManagement />} />
         </Route>
+        <Route path="*" element={<div style={{display:"flex",alignItems:"center",justifyContent:"center", minHeight:'100vh'}}><p>NOT FOUND</p></div>}></Route>
       </Routes>
     </Router>
   );

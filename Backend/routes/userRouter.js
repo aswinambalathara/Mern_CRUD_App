@@ -9,5 +9,5 @@ router.post('/signup',userController.doSignup);
 router.get('/profile',isAuthUser,userController.getProfile);
 router.patch('/profile/edit',isAuthUser,userController.doEditProfile)
 router.patch('/profile/uploadImage',isAuthUser,upload.single('image'),userController.doUploadImage);
-
+ 
 module.exports = router

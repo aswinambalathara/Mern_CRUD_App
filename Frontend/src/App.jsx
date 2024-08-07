@@ -7,15 +7,21 @@ import Dashboard from "./Pages/Admin/Dashboard";
 import AdminLogin from "./Pages/Admin/Login";
 import CreateUserPage from "./Pages/Admin/CreateUserPage";
 import EditUserPage from "./Pages/Admin/EditUserPage";
+import UserPrivatePage from "./Pages/PrivateRoutes/UserPrivatePage";
+import NotPrivatePage from "./Pages/PrivateRoutes/NotPrivatePage";
 function App() {
   return (
     <Router>
       <Routes>
+        <Route element={<UserPrivatePage/>}>
         <Route path="/" element={<Home />}></Route>
         <Route path="/home" element={<Home />}></Route>
+        <Route path="/profile" element={<Profile />}></Route>
+        </Route>
+        <Route element={<NotPrivatePage/>}>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>
-        <Route path="/profile" element={<Profile />}></Route>
+        </Route>
         <Route path="/admin">
           <Route index element={<Dashboard />} />
           <Route path="create_user" element={<CreateUserPage/>}/>

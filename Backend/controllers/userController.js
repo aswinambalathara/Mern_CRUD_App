@@ -1,7 +1,7 @@
 const userModel = require("../models/userModel");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
-const cloudinary = require("../middlewares/cloudinary");
+const { cloudinary, uploadToCloudinary } = require("../middlewares/cloudinary");
 const jwt = require("jsonwebtoken");
 
 module.exports.doLogin = async (req, res) => {
@@ -79,6 +79,7 @@ module.exports.getProfile = async (req, res) => {
     return res.status(200).json({
       status: true,
       message: "Success",
+      user: user,
     });
   } catch (error) {
     console.error(`getProfileError == ${error}`);
@@ -88,13 +89,16 @@ module.exports.getProfile = async (req, res) => {
 module.exports.doEditProfile = async (req, res) => {
   try {
     const { userId } = req.user;
-    const { fullName, email, password } = req.body;
+    let { fullName, email, password } = req.body;
     const user = await userModel.findById(userId);
     if (!user) {
       return res.status(404).json({
         status: false,
         message: "User not found",
       });
+    }
+    if (user.password === password) {
+      password = "";
     }
     const hashPassword = !password.length
       ? undefined
@@ -122,7 +126,23 @@ module.exports.doEditProfile = async (req, res) => {
 module.exports.doUploadImage = async (req, res) => {
   try {
     const { userId } = req.user;
+    const result = await uploadToCloudinary(req.file.buffer);
+    const url = result.secure_url;
+    const update = await userModel.updateOne(
+      { _id: userId },
+      {
+        $set: {
+          image: url,
+        },
+      }
+    );
+    if (update) {
+      return res.json({
+        status: true,
+        url: url,
+      });
+    }
   } catch (error) {
-    console.error(`DoEditProfileError == ${error}`);
+    console.error(`DoUploadImageError == ${error}`);
   }
 };

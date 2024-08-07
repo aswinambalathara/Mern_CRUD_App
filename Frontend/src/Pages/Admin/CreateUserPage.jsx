@@ -1,13 +1,14 @@
 import React from 'react'
-import AdminLogin from '../../Components/Admin/AdminLogin/AdminLogin'
+import CreateUser from '../../Components/Admin/CreateUser/CreateUser'
 import AdminHeader from '../../Components/Admin/Header/AdminHeader'
-function Login() {
+
+function CreateUserPage() {
   return (
     <>
     <AdminHeader/>
-    <AdminLogin/>
+    <CreateUser/>
     </>
   )
 }
 
-export default Login
+export default CreateUserPage

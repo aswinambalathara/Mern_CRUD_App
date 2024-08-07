@@ -1,0 +1,22 @@
+.create-user-container{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-user-container .user-content{
+    display: flex;
+    border-radius: 5px;
+    box-shadow: 6px 1px 23px rgba(0, 0, 0, 0.573);
+    flex-direction: column;
+    min-height: 400px;
+    padding: 50px;
+}
+
+.create-user-container .create-inputs{
+    display: flex;
+    flex-direction: column;
+}
+
+

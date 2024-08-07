@@ -1,0 +1,9 @@
+.admin-Header{
+    min-height: 60px;
+    background-color: #9968c6;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: rgb(235, 235, 235);
+    padding: 0px 30px;
+}

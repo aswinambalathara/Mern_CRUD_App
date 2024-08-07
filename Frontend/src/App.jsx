@@ -5,7 +5,8 @@ import SignUp from "./Pages/User/SignUp";
 import Profile from "./Pages/User/Profile";
 import Dashboard from "./Pages/Admin/Dashboard";
 import AdminLogin from "./Pages/Admin/Login";
-import UserManagement from "./Pages/Admin/UserManagement";
+import CreateUserPage from "./Pages/Admin/CreateUserPage";
+import EditUserPage from "./Pages/Admin/EditUserPage";
 function App() {
   return (
     <Router>
@@ -17,8 +18,9 @@ function App() {
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/admin">
           <Route index element={<Dashboard />} />
+          <Route path="create_user" element={<CreateUserPage/>}/>
+          <Route path="edit_user" element={<EditUserPage/>}/>
           <Route path="login" element={<AdminLogin />} />
-          <Route path="user_management" element={<UserManagement />} />
         </Route>
         <Route path="*" element={<div style={{display:"flex",alignItems:"center",justifyContent:"center", minHeight:'100vh'}}><p>NOT FOUND</p></div>}></Route>
       </Routes>

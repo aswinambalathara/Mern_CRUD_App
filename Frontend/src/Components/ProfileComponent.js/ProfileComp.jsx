@@ -3,13 +3,14 @@ import { Button, TextField } from "@mui/material";
 import { default_profile_pic } from "../../Constants/Constant";
 import React, { useEffect, useState } from "react";
 import axios from "../../Axios/Axios";
-import { useSelector } from "react-redux";
+import {userUpdate} from '../../Redux/user/userSlice';
+import { useDispatch, useSelector } from "react-redux";
 
 function ProfileComp() {
+  const dispatch = useDispatch()
   const { currentUser } = useSelector((state) => state.user);
   const [user, setUserData] = useState({});
   const [image, setImage] = useState(null);
-  //const [url, setUrl] = useState("");
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -112,6 +113,7 @@ function ProfileComp() {
         });
         if (response) {
           console.log(response);
+          dispatch(userUpdate(user.fullName))
           alert("User updated successfully");
         }
       } catch (error) {

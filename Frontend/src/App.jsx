@@ -25,7 +25,7 @@ function App() {
         <Route path="/admin">
           <Route index element={<Dashboard />} />
           <Route path="create_user" element={<CreateUserPage/>}/>
-          <Route path="edit_user" element={<EditUserPage/>}/>
+          <Route path="edit_user/:userId" element={<EditUserPage/>}/>
           <Route path="login" element={<AdminLogin />} />
         </Route>
         <Route path="*" element={<div style={{display:"flex",alignItems:"center",justifyContent:"center", minHeight:'100vh'}}><p>NOT FOUND</p></div>}></Route>

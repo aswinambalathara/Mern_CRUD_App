@@ -23,13 +23,15 @@ module.exports.isAuthUser = (req, res, next) => {
     next();
   } catch (error) {
     console.error(`UserAuthError == ${error}`);
-  }
+  } 
 };
 
 
 module.exports.isAuthAdmin = (req, res, next) => {
     try {
-      const token = req.headers.token;
+      //console.log('hi')
+      const token = req.headers.admintoken;
+      //console.log(token)
       if (!token) {
         return res.status(401).json({
           status: false,

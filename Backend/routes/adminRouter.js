@@ -5,10 +5,11 @@ const {isAuthAdmin} = require('../middlewares/Authenication');
 
 
 router.post("/login",adminController.doAdminLogin);
-router.get('/get_users',isAuthAdmin,);
-router.get('/search_user',isAuthAdmin);
-router.post('/create_user',isAuthAdmin);
-router.patch('/edit_user/:id',isAuthAdmin);
-router.delete('/delete_user/:id',isAuthAdmin);
+router.get('/get_users',isAuthAdmin,adminController.getUsers);
+router.get('/search_users',isAuthAdmin,adminController.doSearchUser);
+router.post('/create_user',isAuthAdmin,adminController.doCreateUser);
+router.get('/get_user/:id',isAuthAdmin,adminController.doGetUser);
+router.patch('/edit_user/:id',isAuthAdmin,adminController.doAdminEditUser);
+router.delete('/delete_user/:id',isAuthAdmin,adminController.doDeleteUser);
 
 module.exports = router;

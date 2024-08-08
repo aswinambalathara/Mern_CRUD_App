@@ -120,6 +120,7 @@ function CreateUser() {
             onChange={handleChange}
             value={user.password}
             label="Password"
+            type="password"
             variant="outlined"
             margin="normal"
           />{errors.password && (

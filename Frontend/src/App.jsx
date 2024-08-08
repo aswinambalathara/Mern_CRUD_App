@@ -9,6 +9,8 @@ import CreateUserPage from "./Pages/Admin/CreateUserPage";
 import EditUserPage from "./Pages/Admin/EditUserPage";
 import UserPrivatePage from "./Pages/PrivateRoutes/UserPrivatePage";
 import NotPrivatePage from "./Pages/PrivateRoutes/NotPrivatePage";
+import AdminPrivatePage from "./Pages/PrivateRoutes/AdminPrivatePage";
+import AdminNotPrivatePage from "./Pages/PrivateRoutes/AdminNotPrivatePage";
 function App() {
   return (
     <Router>
@@ -22,11 +24,13 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>
         </Route>
-        <Route path="/admin">
+        <Route element={<AdminNotPrivatePage/>}>
+        <Route path="/admin/login" element={<AdminLogin />} />
+        </Route>
+        <Route path="/admin" element={<AdminPrivatePage/>}>
           <Route index element={<Dashboard />} />
           <Route path="create_user" element={<CreateUserPage/>}/>
           <Route path="edit_user/:userId" element={<EditUserPage/>}/>
-          <Route path="login" element={<AdminLogin />} />
         </Route>
         <Route path="*" element={<div style={{display:"flex",alignItems:"center",justifyContent:"center", minHeight:'100vh'}}><p>NOT FOUND</p></div>}></Route>
       </Routes>

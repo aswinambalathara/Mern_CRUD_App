@@ -9,7 +9,11 @@ import { useDispatch, useSelector } from "react-redux";
 function ProfileComp() {
   const dispatch = useDispatch()
   const { currentUser } = useSelector((state) => state.user);
-  const [user, setUserData] = useState({});
+  const [user, setUserData] = useState({
+    fullName:'',
+    email:'',
+    password:''
+  });
   const [image, setImage] = useState(null);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(true);
@@ -136,7 +140,7 @@ function ProfileComp() {
     }
   };
 
-  if (loading) return <div>Loading...</div>;
+  //if (loading) return <div>Loading...</div>;
 
   return (
     <div className="Profile-Container">
@@ -157,7 +161,7 @@ function ProfileComp() {
             accept=".jpg,.svg,.png,.webp"
           />
           <Button variant="text" size="small" onClick={handleImageUpload}>
-            Upload Image
+            {loading? 'Loading...' : 'upload image'}
           </Button>
         </div>
         <div className="right-section">
